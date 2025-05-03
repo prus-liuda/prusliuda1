@@ -1,143 +1,373 @@
-<!DOCTYPE html><html lang="uk">
+<!DOCTYPE html>
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genshin Impact Фан-сторінка</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #1e1e2e;
             color: white;
-            text-align: center;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
+
         header {
             background: linear-gradient(90deg, #3b3b5b, #55558a);
             padding: 20px;
-            font-size: 28px;
+            font-size: 2.5rem;
             font-weight: bold;
+            text-align: center;
             text-shadow: 2px 2px 5px black;
             animation: pulse 2s infinite;
         }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
-        .links a {
-            color: #ffcc00;
-            text-decoration: none;
-            font-size: 18px;
-            margin: 10px;
-            display: inline-block;
-            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-        }
-        .links a:hover {
-            text-decoration: underline;
-            color: #ff9900;
-            transform: scale(1.1);
-        }
-        .image-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-        .image-gallery img {
-            width: 300px;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .image-gallery img:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7);
-        }
-        .video-container {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-        }
-        iframe {
-            width: 80%;
-            max-width: 800px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
-            transition: transform 0.3s ease-in-out;
-        }
-        iframe:hover {
-            transform: scale(1.05);
-        }
-        .content-box {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-            margin-top: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease-in-out forwards;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .links a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .links a:hover {
+            color: #ff9900;
+            transform: scale(1.1);
+        }
+
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .image-gallery img {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .video-container img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/4/42/Play_button_3d.svg') no-repeat center center;
+            background-size: contain;
+        }
+
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .character {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .character img {
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .character img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+        }
+
+        .character-info {
+            max-width: 600px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .character-info h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+.character-info p {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
-<body><header>
+<body>
+
+<header>
     ✨🌟 Genshin Impact 🌟✨
-</header><div class="container">
-    <h2>🎮 Ласкаво просимо до світу Teyvat! 🎮</h2><p>Тут ви знайдете 📰 останні новини, 🏆 підказки та ⚔️ оновлення про гру Genshin Impact.</p>
+</header>
 
-<div class="links">
-    <a href="https://genshin.hoyoverse.com/uk/home" target="_blank">🌍 Офіційний сайт</a>
-    <a href="https://gamefaqs.gamespot.com/pc/270518-genshin-impact/faqs" target="_blank">📜 Підказки</a>
-    <a href="https://genshin.hoyoverse.com/uk/news" target="_blank">🔥 Оновлення</a>
-    <a href="https://www.reddit.com/r/Genshin_Impact/" target="_blank">📢 Новини</a>
-</div>
+<div class="container">
+    <h2>🎮 Ласкаво просимо до світу Teyvat! 🎮</h2>
+    <p>Тут ви знайдете 📰 останні новини, 🏆 підказки та ⚔️ оновлення про гру Genshin Impact.</p>
 
-<div class="content-box">
-    <h3>Ігровий процес 🎮</h3>
-    <p><b>Genshin Impact</b> — це рольова гра у відкритому світі, де гравець керує групою з чотирьох персонажів, які подорожують світом у пошуках викраденого близнюка головного героя.</p>
-    <p>🔹 Гравець підвищує <b>ранг пригод</b>, що визначає доступ до сюжету, подій і складність ворогів.</p>
-    <p>🔹 Кожен персонаж має свою зброю та магічну стихію, наприклад, меч і вогняну магію.</p>
-    <p>🔹 Світ поділений на <b>регіони</b>, кожен із яких має власну культуру та стиль.</p>
-</div>
-<div class="content-box">
-<h3>🌟 Цікаві факти 🌟</h3>
-    <ul>
-        <li>🌍 У грі є 7 націй, кожна з яких представляє певний елемент та культуру.</li>
-        <li>🎤 Озвучення персонажів доступне на кількох мовах, включаючи японську, англійську та китайську.</li>
-        <li>🎮 Гра має понад 50 мільйонів гравців по всьому світу.</li>
-        <li>🎶 Саундтрек Genshin Impact записувався з Лондонським симфонічним оркестром.</li>
-    </ul>
-</div>
-<div class="content-box">
-    <h3>🌟 Галерея 🌟</h3>
-    <div class="image-gallery">
-        <img src="https://kartinki.pics/uploads/posts/2022-03/1646857217_11-kartinkin-net-p-krasivie-kartinki-genshin-impakt-16.jpg" alt="Genshin Impact Art">
-        <img src="https://th.bing.com/th/id/R.18165d4e93df6643c8948d80b5fc515a?rik=wMCXrzUK4uaUyw&pid=ImgRaw&r=0" alt="Genshin Impact Scene">
-        <img src="https://oterraria.ru/wp-content/uploads/2021/06/genshin_wallpaper_02_4k-scaled.jpg" alt="Genshin Impact Character">
+    <div class="links">
+        <a href="https://genshin.hoyoverse.com/uk/home" target="_blank">🌍 Офіційний сайт</a>
+        <a href="https://gamefaqs.gamespot.com/pc/270518-genshin-impact/faqs" target="_blank">📜 Підказки</a>
+        <a href="https://genshin.hoyoverse.com/uk/news" target="_blank">🔥 Оновлення</a>
+        <a href="https://www.reddit.com/r/Genshin_Impact/" target="_blank">📢 Новини</a>
     </div>
-</div>
 
-<div class="content-box">
-    <h3>🎥 Відео про гру 🎥</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/l9DaGlnmYdY" frameborder="0" allowfullscreen></iframe>
+    <div class="content-box">
+        <h3>Ігровий процес 🎮</h3>
+        <p><b>Genshin Impact</b> — це рольова гра у відкритому світі, де гравець керує групою з чотирьох персонажів, які подорожують світом у пошуках викраденого близнюка головного героя.</p>
+        <p>🔹 Гравець підвищує <b>ранг пригод</b>, що визначає доступ до сюжету, подій і складність ворогів.</p>
+        <p>🔹 Кожен персонаж має свою зброю та магічну стихію, наприклад, меч і вогняну магію.</p>
+        <p>🔹 Світ поділений на <b>регіони</b>, кожен із яких має власну культуру та стиль.</p>
     </div>
+
+    <div class="content-box">
+        <h3>🌟 Цікаві факти 🌟</h3>
+        <ul>
+            <li>🌍 У грі є 7 націй, кожна з яких представляє певний елемент та культуру.</li>
+            <li>🎤 Озвучення персонажів доступне на кількох мовах, включаючи японську, англійську та китайську.</li>
+            <li>🎮 Гра має понад 50 мільйонів гравців по всьому світу.</li>
+            <li>🎶 Саундтрек Genshin Impact записувався з Лондонським симфонічним оркестром.</li>
+        </ul>
+    </div>
+
+    <div class="content-box">
+        <h3>🌟 Галерея 🌟</h3>
+        <div class="image-gallery">
+            <img src="https://moewalls.com/wp-content/uploads/2022/10/raiden-shogun-and-yae-miko-genshin-impact-thumb.jpg" alt="Raiden Shogun та Yae Miko">
+            <img src="https://oterraria.ru/wp-content/uploads/2021/06/genshin_wallpaper_02_4k-scaled.jpg" alt="Геншин Арт">
+            <img src="https://cs12.pikabu.ru/post_img/big/2021/04/07/1/1617747307163634993.jpg" alt="Геншин Персонаж">
+        </div>
+    </div>
+     <div class="content-box">
+          <h3>🎥 Відео про гру 🎥</h3>
+        <div class="video-container" onclick="playVideo()">
+            <img src="https://img.youtube.com/vi/_VneeYsGT9I/maxresdefault.jpg" alt="Відео YouTube">
+            <div class="play-button"></div>
+        </div>
+    </div>
+  <div class="content-box">
+
+<section class="tips-section">
+  <h2>Поради для новачків у Genshin Impact</h2>
+
+  <div class="tip-card">
+    <h3>1. Сфокусуйся на основному персонажі</h3>
+    <p>На початку гри краще вкладати ресурси в одного-двох сильних героїв, щоб швидше проходити контент.</p>
+  </div>
+
+  <div class="tip-card">
+    <h3>2. Використовуй елементальні реакції</h3>
+    <p>Комбінуй стихії (наприклад, Pyro + Hydro = Vaporize), щоб завдавати вищу шкоду.</p>
+  </div>
+
+  <div class="tip-card">
+    <h3>3. Щоденні завдання</h3>
+    <p>Щоденні квести дають Primogems та досвід — не пропускай їх!</p>
+  </div>
+
+  <div class="tip-card">
+    <h3>4. Досліджуй світ</h3>
+    <p>Світ Teyvat повен секретів: скрині, анімо куби, загадки — усе дає корисні ресурси.</p>
+  </div>
+</section>
+
+<style>
+  .tips-section {
+    padding: 2em;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .tips-section h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 1.8em;
+    color: var(--link-color);
+  }
+
+  .tip-card {
+    background: var(--card-bg);
+    border-left: 4px solid var(--link-color);
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .tip-card h3 {
+    margin-top: 0;
+    color: var(--link-color);
+  }
+
+  .tip-card p {
+    margin: 0.5em 0 0;
+  }
+</style>
+  <div class="content-box">
+<section class="gallery">
+  <h2>Галерея смішних картинок з Genshin Impact</h2>
+  <div class="gallery-grid">
+    <img src="https://th.bing.com/th/id/OIP.7PmAi4yN_ouzhUFulsf2AAHaFh?rs=1&pid=ImgDetMain" alt="Мем 1">
+    <img src="https://th.bing.com/th/id/OIP.V8i34gkhbkYSNZqJIItnUwHaFa?rs=1&pid=ImgDetMain" alt="Мем 2">
+    <img src="https://i.pinimg.com/originals/7e/c6/cb/7ec6cbb15b69c592ebffdb0a98139bd5.jpg" alt="Мем 3">
+    <img src="https://media1.tenor.com/m/BAK4Fdwfu1sAAAAC/ayato-ayato-genshin.gif" alt="Мем 4">
+  </div>
+</section>
+
+<!-- Лайтбокс -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="Велике зображення">
 </div>
 
-</div></body>
-</html>
+<style>
+  .gallery {
+    padding: 2em;
+    text-align: center;
+  }
+
+  .gallery h2 {
+    margin-bottom: 1em;
+    font-size: 1.8em;
+    color: var(--link-color);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .gallery-grid img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  .gallery-grid img:hover {
+    transform: scale(1.05);
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    color: #ccc;
+  }
+</style>
+
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const images = document.querySelectorAll(".gallery-grid img");
+
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = "flex";
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.style.display = "none";
+    lightboxImg.src = "";
+  }
+</script>
+  </div>
+    </div>
+
+
+
+
+
